@@ -1,8 +1,5 @@
 package com.andreyatapin
 
-/**
- *
- */
 class App {
     static void main(String[] args) {
         ComponentRegistry registry = ComponentRegistry.instance
