@@ -1,14 +1,21 @@
 package com.andreyatapin
 
-/**
- *
- */
-class UserServiceComponent {
-    final def userService = new UserService()
+import com.andreyatapin.UserRepositoryComponent.UserRepository
+import groovy.transform.CompileStatic
+import groovy.transform.SelfType
 
-    class UserService {
+@CompileStatic
+@SelfType([UserRepositoryComponent])
+trait UserServiceComponent {
+    UserService userService
 
-        UserRepositoryComponent.UserRepository userRepository
+    static class UserService {
+
+        UserRepository userRepository
+
+        public UserService(UserRepository userRepository) {
+            this.userRepository = userRepository
+        }
 
         def authenticate(User user) {
             userRepository.authenticate(user)

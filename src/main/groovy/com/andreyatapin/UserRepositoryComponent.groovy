@@ -1,12 +1,12 @@
 package com.andreyatapin
 
-/**
- *
- */
-trait UserRepositoryComponent {
-    final def repository = new UserRepository()
+import groovy.transform.CompileStatic
 
-    class UserRepository {
+@CompileStatic
+trait UserRepositoryComponent {
+    UserRepository userRepository
+
+    static class UserRepository {
 
         def authenticate(User user) {
             println "Authenticating user ${user}"
